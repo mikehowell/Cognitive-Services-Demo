@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "01aef1c9-0f7b-4890-8f73-30e9f5148282",
+		"name": "CoastMeetUp",
+		"description": "Cognitive Services Demo for Hibiscus coast MeetUp.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Visual API - Visual Analysis1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{API_Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mikeho/OneDrive/Documents/Coast Meetup Demo/Vision API/SatyaNadella.jpg"
+					}
+				},
+				"url": {
+					"raw": "{{AzureEndPoint}}/vision/v2.0/analyze/?visualFeatures=Faces,Tags&details=Celebrities",
+					"host": [
+						"{{AzureEndPoint}}"
+					],
+					"path": [
+						"vision",
+						"v2.0",
+						"analyze",
+						""
+					],
+					"query": [
+						{
+							"key": "visualFeatures",
+							"value": "Faces,Tags"
+						},
+						{
+							"key": "details",
+							"value": "Celebrities"
+						}
+					]
+				},
+				"description": "Using \nVisual Features Params = Tags and Faces \ndetails param = Celebrities"
+			},
+			"response": []
+		},
+		{
+			"name": "Visual API - Visual Analysis2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{API_Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mikeho/OneDrive/Documents/Coast Meetup Demo/Vision API/Visual Analysis 1/BurjKhalifa.jpg"
+					}
+				},
+				"url": {
+					"raw": "{{AzureEndPoint}}/vision/v2.0/analyze/?details=Celebrities",
+					"host": [
+						"{{AzureEndPoint}}"
+					],
+					"path": [
+						"vision",
+						"v2.0",
+						"analyze",
+						""
+					],
+					"query": [
+						{
+							"key": "details",
+							"value": "Celebrities"
+						},
+						{
+							"key": "details",
+							"value": "Landmarks",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Visual API - Detect Objects",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{API_Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mikeho/OneDrive/Documents/Coast Meetup Demo/Vision API/Detect Objects/WinXPbackground.jpg"
+					}
+				},
+				"url": {
+					"raw": "{{AzureEndPoint}}/vision/v2.0/detect",
+					"host": [
+						"{{AzureEndPoint}}"
+					],
+					"path": [
+						"vision",
+						"v2.0",
+						"detect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Face API - Detect",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{API_Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mikeho/OneDrive/Documents/Coast Meetup Demo/Sample Data/Face Detect/face3.jpg"
+					}
+				},
+				"url": {
+					"raw": "{{AzureEndPoint}}/face/v1.0/detect?returnFaceAttributes=age,gender,smile,facialHair,glasses,hair,makeup,accessories&recognitionModel=recognition_02",
+					"host": [
+						"{{AzureEndPoint}}"
+					],
+					"path": [
+						"face",
+						"v1.0",
+						"detect"
+					],
+					"query": [
+						{
+							"key": "returnFaceAttributes",
+							"value": "age,gender,smile,facialHair,glasses,hair,makeup,accessories"
+						},
+						{
+							"key": "recognitionModel",
+							"value": "recognition_02"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Computer Vision API - Recognize Text",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c6e3ff9-470f-4999-b9fd-f05ee25584a8",
+						"exec": [
+							"postman.setEnvironmentVariable(\"TextResponse-Operation-Location\", postman.getResponseHeader(\"operation-location\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{API_Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mikeho/OneDrive/Documents/Coast Meetup Demo/Sample Data/Computer Vision/HelloWorld.jpg"
+					}
+				},
+				"url": {
+					"raw": "{{AzureEndPoint}}/vision/v2.0/recognizeText?mode=Handwritten",
+					"host": [
+						"{{AzureEndPoint}}"
+					],
+					"path": [
+						"vision",
+						"v2.0",
+						"recognizeText"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "Handwritten"
+						},
+						{
+							"key": "mode",
+							"value": "Printed",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Computer Vision API - Recognize Text Part 2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{API_Key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{TextResponse-Operation-Location}}",
+					"host": [
+						"{{TextResponse-Operation-Location}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
